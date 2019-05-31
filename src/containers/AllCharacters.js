@@ -15,7 +15,6 @@ export default class AllCharacters extends PureComponent {
     this.setState({ loading: true });
     getCharacters(this.state.currentPage)
       .then((results) => {
-        console.log('RESULTS', results);
         this.setState({ loading: false, characters: results.results, totalPages: results.info.pages });
       });
   }
@@ -33,7 +32,6 @@ export default class AllCharacters extends PureComponent {
   }
 
   render() {
-    console.log(this.state);
     const { characters, currentPage, totalPages } = this.state;
     return (
       <Paging currentPage={currentPage} totalPages={totalPages} nextPage={this.nextPage}>
