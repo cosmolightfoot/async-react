@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import Characters from '../components/Characters';
 import getCharacters from '../services/getCharacters';
-
+import Paging from '../components/Paging';
 
 export default class AllCharacters extends PureComponent {
   state = {
@@ -15,8 +14,9 @@ export default class AllCharacters extends PureComponent {
   fetchCharacters = () => {
     this.setState({ loading: true });
     getCharacters(this.state.currentPage)
-      .then(({ results, pages }) => {
-        this.setState({ loading: false, characters: results, totalPages: pages });
+      .then((results) => {
+        console.log('RESULTS', results);
+        this.setState({ loading: false, characters: results.results, totalPages: results.info.pages });
       });
   }
 
@@ -33,9 +33,12 @@ export default class AllCharacters extends PureComponent {
   }
 
   render() {
-    const { characters } = this.state;
+    console.log(this.state);
+    const { characters, currentPage, totalPages } = this.state;
     return (
-      <Characters characters={characters} />
+      <Paging currentPage={currentPage} totalPages={totalPages} nextPage={this.nextPage}>
+        <Characters characters={characters} />
+      </Paging>
     );
   }  
 }
