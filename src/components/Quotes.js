@@ -12,11 +12,7 @@ function Quotes({ quotes }) {
 }
 
 Quotes.propTypes = {
-  quotes: PropTypes.arrayOf([
-    PropTypes.shape({
-      character: PropTypes.string.isRequired,
-      quote: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired
-    }).isRequired
-  ]).isRequired
+  quotes: PropTypes.array.isRequired
 };
+
+export default Quotes;

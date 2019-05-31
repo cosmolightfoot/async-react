@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Quote snapshot test snapshots 1`] = `
+<li>
+  <img
+    src="www.url.com"
+  />
+  <h3>
+    bender
+  </h3>
+  <p>
+    bite me
+  </p>
+</li>
+`;
